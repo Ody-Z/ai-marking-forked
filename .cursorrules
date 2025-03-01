@@ -1,0 +1,68 @@
+# .cursorrules
+project: "MVP Homework Marking System"
+description: >
+  This MVP is an AI-driven homework marking system. It allows users to upload a marking criteria PDF and a student homework PDF.
+  The system processes these inputs using a basic Retrieval Augmented Generation (RAG) pipeline powered by LangChain,
+  integrates with Pinecone for vector search, and outputs a feedback PDF containing marks and detailed comments.
+
+techStack:
+  backend:
+    language: Python
+    framework: FastAPI
+    libraries:
+      - LangChain         # For managing RAG workflows.
+      - pinecone-client   # To interface with the Pinecone vector database.
+      - PyPDF2            # For extracting text from PDF files.
+      - reportlab         # For generating PDF feedback reports.
+    services:
+      - pdf_processor: "Extracts text from uploaded PDFs."
+      - llm_service: "Interacts with the LLM (e.g., GPT-4) to generate marks and feedback."
+      - rag_pipeline: "Orchestrates the RAG flow using LangChain to enrich content using Pinecone."
+      - pinecone_service: "Manages vector operations (indexing, querying) with Pinecone."
+  frontend:
+    language: HTML, CSS, JavaScript
+    description: "A simple user interface for file uploads and displaying status/feedback."
+  containerization:
+    tool: Docker
+    orchestrator: docker-compose
+
+fileStructure:
+  backend:
+    - app.py: "Entry point for the FastAPI application; initializes the server and registers routes."
+    - config.py: "Holds configuration settings (API keys, Pinecone config, environment variables)."
+    - endpoints/
+      - upload.py: "Defines API endpoints for handling PDF uploads and triggering processing."
+    - models/
+      - __init__.py: "Placeholder for data models; useful for future expansion."
+    - services/
+      - pdf_processor.py: "Extracts text content from uploaded PDF files."
+      - llm_service.py: "Wraps LLM API calls to generate feedback and marks."
+      - rag_pipeline.py: "Implements the basic RAG workflow using LangChain to retrieve context and form prompts."
+      - pinecone_service.py: "Handles all operations with the Pinecone vector database."
+    - utils/
+      - file_helpers.py: "Contains utility functions for file management and temporary storage."
+    - requirements.txt: "Lists all Python dependencies required for the backend."
+    - Dockerfile: "Dockerfile to containerize the backend application."
+    - README.md: "Documentation specific to backend setup and usage."
+  frontend:
+    - index.html: "Basic HTML page for uploading PDFs."
+    - app.js: "JavaScript to manage file uploads and communicate with backend endpoints."
+    - styles.css: "Basic styling for the upload interface."
+    - README.md: "Documentation for frontend setup and usage."
+  root:
+    - docker-compose.yml: "Orchestrates the containers for backend and frontend."
+    - .env: "Stores environment variables (API keys, ports, Pinecone config, etc.)."
+    - README.md: "Overall project documentation and setup instructions."
+
+codeGuidelines:
+  - "Maintain a modular file structure with clear separation between services, endpoints, and utilities."
+  - "Include inline comments and file-level documentation for clarity."
+  - "Implement proper error handling and logging in all services."
+  - "Ensure that any changes align with the defined file structure and tech stack."
+  - "Keep the MVP simple but modular enough to allow for future enhancements."
+
+cursorRules:
+  - "When developing new features or modifications, refer to this .cursorrules file to ensure consistency with the technical stack."
+  - "Follow the provided file structure and naming conventions."
+  - "All new code should include appropriate documentation and adhere to the specified coding guidelines."
+  - "Use FastAPI for backend endpoints, LangChain for the RAG pipeline, and Pinecone for vector operations."

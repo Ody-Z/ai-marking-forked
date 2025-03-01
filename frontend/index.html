@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Marking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Homework Marking System</h1>
+        </header>
+        
+        <main>
+            <div class="upload-section">
+                <h2>Upload Documents</h2>
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label for="student-name">Student Name</label>
+                        <input type="text" id="student-name" name="student_name" placeholder="Enter student name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="assignment-title">Assignment Title</label>
+                        <input type="text" id="assignment-title" name="assignment_title" placeholder="Enter assignment title">
+                    </div>
+                    
+                    <div class="file-upload">
+                        <label for="marking-criteria">Upload Marking Criteria (PDF)</label>
+                        <input type="file" id="marking-criteria" name="marking_criteria" accept=".pdf" required>
+                    </div>
+                    
+                    <div class="file-upload">
+                        <label for="homework">Upload Student Homework (PDF)</label>
+                        <input type="file" id="homework" name="homework" accept=".pdf" required>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn">Process Homework</button>
+                </form>
+            </div>
+            
+            <div id="status-section" class="status-section hidden">
+                <h2>Processing Status</h2>
+                <div id="status-message"></div>
+                <div class="progress-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <button id="download-btn" class="hidden">Download Feedback</button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>MVP Homework Marking System &copy; 2023</p>
+        </footer>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html> 

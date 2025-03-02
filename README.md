@@ -1,32 +1,3 @@
-## file structure
-mvp/
-├── backend/
-│   ├── app.py
-│   ├── config.py
-│   ├── endpoints/
-│   │   └── upload.py             # API endpoint for handling file uploads.
-│   ├── models/
-│   │   └── __init__.py           # (Optional) For future expansion if you decide to use ORM models.
-│   ├── services/
-│   │   ├── pdf_processor.py      # Extracts text from uploaded PDFs.
-│   │   ├── llm_service.py        # Handles calls to the LLM (e.g., GPT-4) for generating feedback.
-│   │   ├── rag_pipeline.py       # Orchestrates the RAG flow using LangChain to retrieve relevant context.
-│   │   └── pinecone_service.py   # Manages interactions with the Pinecone vector database.
-│   ├── utils/
-│   │   └── file_helpers.py       # Utility functions for file I/O and temporary storage.
-│   ├── requirements.txt          # Lists dependencies (FastAPI, LangChain, Pinecone client, PyPDF2, reportlab, etc.)
-│   ├── Dockerfile                # Dockerfile for containerizing the backend.
-│   └── README.md                 # Backend documentation and setup instructions.
-├── frontend/
-│   ├── index.html                # Simple HTML page for uploading PDFs.
-│   ├── app.js                    # JavaScript to handle file uploads and API calls.
-│   ├── styles.css                # Basic styling for the upload page.
-│   └── README.md                 # Frontend documentation.
-├── docker-compose.yml            # Orchestrates the backend and frontend containers.
-├── .env                          # Environment variables (API keys, Pinecone keys, ports, etc.)
-└── README.md                     # Overall project documentation and setup instructions.
-
-
 ## File Descriptions
 ### Backend
 app.py:
